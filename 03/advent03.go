@@ -5,13 +5,6 @@ import (
 	"strings"
 )
 
-type Entry struct {
-	min  int
-	max  int
-	c    string
-	pass string
-}
-
 func checkMovement(lines []string, xinc int, yinc int) int {
 	stride := len(lines[0])
 	trees := 0
