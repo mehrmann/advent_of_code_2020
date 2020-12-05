@@ -17,7 +17,6 @@ func calcRow(s string) int {
 		} else {
 			max -= step[i]
 		}
-		//println(i, p, min, max)
 	}
 	return min
 }
@@ -34,9 +33,24 @@ func calcColumn(s string) int {
 		} else {
 			max -= step[i]
 		}
-		//println(i, p, min, max)
 	}
 	return min
+}
+
+func printSeatMap(used []bool) {
+	for y := 0; y < 128; y++ {
+		for x := 0; x < 8; x++ {
+			if used[y*8+x] {
+				print(".")
+			} else {
+				print("O")
+			}
+			if x == 1 || x == 5 {
+				print(" ")
+			}
+		}
+		println()
+	}
 }
 
 func main() {
@@ -59,10 +73,13 @@ func main() {
 		used[seat] = true
 	}
 
+	printSeatMap(used)
+
 	println(max)
 	for i := 1; i < 128*8; i++ {
 		if used[i-1] == true && used[i] == false && used[i+1] == true {
 			println(i)
 		}
 	}
+
 }
